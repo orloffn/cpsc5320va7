@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- Material Kit CSS -->
   <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body class="dark-edition">
@@ -81,6 +83,7 @@
                   <p class="card-category">tesing</p>
                 </div>
                 <div class="card-body table-responsive">
+                <div id="tester" style="width:600px;height:250px;"></div>
                 </div>
               </div>
             </div>
@@ -144,6 +147,7 @@
   </div>
   <!--   Core JS Files   -->
   <script src="./assets/js/core/jquery.min.js"></script>
+  
   <script src="./assets/js/core/popper.min.js"></script>
   <script src="./assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="https://unpkg.com/default-passive-events"></script>
@@ -160,6 +164,7 @@
   <script src="./assets/js/material-dashboard.js?v=2.1.0"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="./assets/demo/demo.js"></script>
+  <script src="./assets/js/graph.js"></script>
   <script>
     $(document).ready(function () {
       $().ready(function () {
@@ -322,6 +327,7 @@
       });
     });
   </script>
+  
 </body>
 
 </html>

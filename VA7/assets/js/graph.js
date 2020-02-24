@@ -39,13 +39,14 @@ Plotly.d3.csv('assets/js/country.csv', function(err, rows){
 	// countries.forEach((key, i) => marker_cols[key] = colors[i]);
 	// var colors_mapped = [for (x of unpack(rows, 'country')) marker_cols[x]]
 	// console.log(colors_mapped)
+
+	/*
 	var data = [{
 		x: unpack(rows, 'audio_length'),
 		y: unpack(rows, 'db'),
 		text: unpack(rows, 'country'),
 		mode: 'markers',
 		marker: {
-			// color: colors_mapped,
 			opacity: 0.5,
 			size: 5,
 			line: {
@@ -57,4 +58,23 @@ Plotly.d3.csv('assets/js/country.csv', function(err, rows){
 	}];
 
 	Plotly.newPlot('graph3', data)
+	*/
+
+var data = [{
+  type: 'scatter',
+  x: unpack(rows, 'audio_length'),
+  y: unpack(rows, 'db'),
+  mode: 'markers',
+  transforms: [{
+    type: 'groupby',
+    groups: unpack(rows, 'country'),
+    styles: [
+      {target: 'usa', value: {marker: {color: 'blue'}}},
+      {target: 'russia', value: {marker: {color: 'red'}}},
+      {target: 'algeria', value: {marker: {color: 'black'}}}
+    ]
+  }]
+}]
+
+Plotly.newPlot('graph3', data)
 });

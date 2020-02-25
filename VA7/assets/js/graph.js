@@ -38,21 +38,20 @@ Plotly.d3.csv('assets/js/country.csv', function(err, rows){
 
     // scatterplot
 	var data = [{
-		x: unpack(rows, 'audio_length'),
-		y: unpack(rows, 'db'),
-		text: unpack(rows, 'country'),
-		mode: 'markers',
-		marker: {
-			// color: colors_mapped,
-			opacity: 0.5,
-			size: 5,
-			line: {
-				color: 'rgb(0, 0, 0)',
-				width: 1
-			}
-		},
-		showlegend: false
-	}];
+	  type: 'scatter',
+	  x: unpack(rows, 'audio_length'),
+	  y: unpack(rows, 'db'),
+	  mode: 'markers',
+	  transforms: [{
+	    type: 'groupby',
+	    groups: unpack(rows, 'country'),
+	    styles: [
+	      {target: 'usa', value: {marker: {color: 'blue'}}},
+	      {target: 'russia', value: {marker: {color: 'red'}}},
+	      {target: 'algeria', value: {marker: {color: 'black'}}}
+	    ]
+	  }]
+	}]
 	var layout = {
 		xaxis: {
 			title: {
@@ -82,6 +81,5 @@ Plotly.d3.csv('assets/js/country.csv', function(err, rows){
 			pad: 4
 		},
 	};
-
 	Plotly.newPlot('graph3', data, layout)
 });

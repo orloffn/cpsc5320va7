@@ -10,16 +10,26 @@ Plotly.d3.csv('assets/js/country.csv', function(err, rows){
         locations: unpack(rows, 'country'),
         z: unpack(rows, 'audio_length'),
         text: unpack(rows, 'country'),
-        autocolorscale: true
+        autocolorscale: true,
+		colorbar: {
+			title: 'Speech Length (s)'
+		}
     }];
 
     var layout = {
-      title: '',
-      geo: {
-          projection: {
-              type: 'robinson'
-          }
-      }
+		title: '',
+		geo: {
+			projection: {
+				type: 'robinson'
+			}
+		},
+		margin: {
+			l: 50,
+			r: 50,
+			b: 10,
+			t: 30,
+			pad: 4
+		},
     };
 
     Plotly.newPlot("graph1", data, layout, {showLink: false});
@@ -27,18 +37,6 @@ Plotly.d3.csv('assets/js/country.csv', function(err, rows){
     // tone visual
 
     // scatterplot
-	// function onlyUnique(value, index, self) { 
-	// 	return self.indexOf(value) === index;
-	// }
-	// var countries = unpack(rows, 'country').filter(onlyUnique)
-	// var colors = []
-	// for (var i = countries.length - 1; i >= 0; i--) {
-	// 	colors.push('rgb(255, 112, ' + (12 + i) + ')')
-	// }
-	// var marker_cols = {}
-	// countries.forEach((key, i) => marker_cols[key] = colors[i]);
-	// var colors_mapped = [for (x of unpack(rows, 'country')) marker_cols[x]]
-	// console.log(colors_mapped)
 	var data = [{
 		x: unpack(rows, 'audio_length'),
 		y: unpack(rows, 'db'),
@@ -55,6 +53,35 @@ Plotly.d3.csv('assets/js/country.csv', function(err, rows){
 		},
 		showlegend: false
 	}];
+	var layout = {
+		xaxis: {
+			title: {
+				text: 'Speech Length (s)',
+				font: {
+					family: 'Courier New, monospace',
+					size: 18,
+					color: '#7f7f7f'
+				}
+			},
+		},
+		yaxis: {
+			title: {
+				text: 'Loudness (dB)',
+				font: {
+					family: 'Courier New, monospace',
+					size: 18,
+					color: '#7f7f7f'
+				}
+			}
+		},
+		margin: {
+			l: 50,
+			r: 50,
+			b: 50,
+			t: 30,
+			pad: 4
+		},
+	};
 
-	Plotly.newPlot('graph3', data)
+	Plotly.newPlot('graph3', data, layout)
 });

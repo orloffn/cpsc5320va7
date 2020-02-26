@@ -1,4 +1,4 @@
-Plotly.d3.csv('assets/js/country.csv', function(err, rows){
+Plotly.d3.csv('assets/js/continent.csv', function(err, rows){
 	// map visual
     function unpack(rows, key) {
         return rows.map(function(row) { return row[key]; });
@@ -62,12 +62,7 @@ Plotly.d3.csv('assets/js/country.csv', function(err, rows){
 	  mode: 'markers',
 	  transforms: [{
 	    type: 'groupby',
-	    groups: unpack(rows, 'country'),
-	    styles: [
-	      {target: 'usa', value: {marker: {color: 'blue'}}},
-	      {target: 'russia', value: {marker: {color: 'red'}}},
-	      {target: 'algeria', value: {marker: {color: 'black'}}}
-	    ]
+	    groups: unpack(rows, 'continent')
 	  }]
 	}]
 	var layout = {

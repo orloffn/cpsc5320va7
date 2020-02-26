@@ -34,26 +34,6 @@ Plotly.d3.csv('assets/js/continent.csv', function(err, rows){
 
     Plotly.newPlot("graph1", data, layout, {showLink: false});
 
-    // tone visual
-    var data = [{
-		type: 'box',
-		y: unpack(rows, 'audio_length'),
-		transforms: [{
-			type: 'groupby',
-			groups: unpack(rows, 'country'),
-			styles: [
-				{target: 'usa', value: {marker: {color: 'blue'}}},
-				{target: 'russia', value: {marker: {color: 'red'}}},
-				{target: 'algeria', value: {marker: {color: 'black'}}}
-			]
-		}]
-    }];
-    var layout = {
-    	showlegend: false
-    };
-
-    Plotly.newPlot('graph2', data, layout)
-
     // scatterplot
 	var data = [{
 	  type: 'scatter',
